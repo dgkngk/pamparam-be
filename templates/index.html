@@ -10,34 +10,16 @@
   </head>
   <body>
     <div class = "container-xl bg-success" style = "--bs-bg-opacity: .3;">
-      <table class="table table-striped">
-        <div class = "container border rounded bg-light" style = "--bs-bg-opacity: .8;">
-        <tr>
-          <th>Exchange</th><th>StochRSI %k</th><th>StochRSI %d</th><th>Signal</th>
-        </tr>
-        </div>
-        {% for coin,dict in coin_data.items() %}
-          <tr>
-            <th> {{coin}}</th>
-            {% for col, info in dict.items() %}
-              <td>
-                {{info}}
-              </td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
+        <form action = "http://localhost:5000/" method = "post">
+            
+            <label for="selection">Select Tickers:</label>
+            <select name="selection">
+                {% for object, info in ticker_list.items() %}
+                    <option value = {{info}} > {{info}} </option>
+                {% endfor %}
+            </select>
+            <p><input type = "submit" value = "submit" /></p>
+         </form>
     </div>
     
-<!--
-    <script src="{{ url_for('static', filename='chart.js') }}"></script>
-    
-      <div style = "padding : 30">
-        <input type ="checkbox"/>RSI
-        <input type="text" id = "rsi_len" name = "rsi_len" placeholder = "14"/>
-        <input type="text" id = "rsi_ovs" name = "rsi_os" placeholder ="30"/>
-        <input type="text" id = "rsi_ovb" name = "rsi_ob" placeholder="70"/>
-      </div>-->
-      
   </body>
-</html>
